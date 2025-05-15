@@ -2,6 +2,7 @@ import fire
 import pandas as pd
 import sklearn.metrics as metrics
 import os
+import os
 
 
 class preprocess_data:
@@ -94,10 +95,12 @@ class preprocess_data:
         return df_data_preprocessed_clean
 
 def process_preprocess_dataset(x_cols, y_col):
-    df_data_train = pd.read_csv("../data/out/application_data_train.csv")
-    preprocess_data_instance = preprocess_data("../outputs")
+    if (os.getcwd().endswith('src')):
+        os.chdir("..")
+    df_data_train = pd.read_csv("data/out/application_data_train.csv")
+    preprocess_data_instance = preprocess_data("outputs")
     df_data_train_prepared = preprocess_data_instance.preprocess_dataset(df_data_train, x_cols, y_col)
-    df_data_train_prepared.to_csv("../data/out/application_data_train_prepared.csv", index=False)
+    df_data_train_prepared.to_csv("data/out/application_data_train_prepared.csv", index=False)
 
 def main():
     x_cols = ["CNT_CHILDREN", "AMT_INCOME_TOTAL", "AMT_CREDIT", "AMT_ANNUITY", "AMT_GOODS_PRICE", "DAYS_BIRTH","DAYS_EMPLOYED", "DAYS_REGISTRATION", "DAYS_ID_PUBLISH", "OWN_CAR_AGE"]

@@ -1,5 +1,6 @@
 import fire
 import pandas as pd
+import os
 
 
 class prepare_data():
@@ -24,10 +25,12 @@ class prepare_data():
         return df_data_prepared
 
 def process_prepare_dataset(y_col):
-    df_data_test = pd.read_csv("../data/out/application_data_test.csv")
-    prepare_data_instance = prepare_data("../outputs")
+    if (os.getcwd().endswith('src')):
+        os.chdir("..")
+    df_data_test = pd.read_csv("data/out/application_data_test.csv")
+    prepare_data_instance = prepare_data("outputs")
     df_data_test_prepared = prepare_data_instance.prepare_dataset(df_data_test, y_col)
-    df_data_test_prepared.to_csv("../data/out/application_data_test_prepared.csv", index=False)
+    df_data_test_prepared.to_csv("data/out/application_data_test_prepared.csv", index=False)
 
 
 def main():
