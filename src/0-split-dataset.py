@@ -11,7 +11,7 @@ def split_data(df_data, perc_data_train):
 def process_split_data():
     if (os.getcwd().endswith('src')):
         os.chdir("..")
-    df_data = pd.read_csv("data/orig/application_data.csv")
+    df_data = pd.read_csv("data/in/application_data.csv")
     df_data_train, df_data_test = split_data(df_data, 0.7)
 
     if (not (os.path.exists("data/out"))):
