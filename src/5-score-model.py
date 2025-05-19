@@ -16,7 +16,7 @@ class ScoreModel:
         df_data_imputed = df_data_score.copy()
         df_impute_parameters = pd.read_csv(f"{self._output_path_preprocess}/impute_missing_parameters.csv")
         for col in x_cols:
-            impute_value = df_impute_parameters[df_impute_parameters["variable"]==col]["impute_value"]
+            impute_value = df_impute_parameters[df_impute_parameters["variable"]==col]["impute_value"].values[0]
             df_data_imputed[col] = df_data_imputed[col].fillna(impute_value)
         return df_data_imputed
 
