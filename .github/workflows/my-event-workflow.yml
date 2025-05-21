@@ -1,5 +1,8 @@
 name: My Event Workflow
-on: push
+on: 
+   push: 
+    branches:
+        -"master"
 jobs:
   model-ci:
     runs-on: ubuntu-latest
