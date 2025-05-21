@@ -1,0 +1,14 @@
+name: My Event Workflow
+on: push
+jobs:
+  model-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Model
+        run: echo "Build Model in CI Pipeline"
+  model-cd:
+    needs: model-ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Model
+        run: echo "Deploy Model in CD Pipeline"
